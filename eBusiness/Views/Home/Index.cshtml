@@ -1,0 +1,691 @@
+﻿@model eBusiness.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Hero Section -->
+<section id="hero" class="hero section">
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="hero-content" data-aos="fade-up" data-aos-delay="200">
+                    <h2>@Model.Setting.SystemSettingWelcomeNoteTitle</h2>
+                    <p>@Model.Setting.SystemSettingWelcomeNoteBreef</p>
+                    @Html.Raw(Model.Setting.SystemSettingWelcomeNoteDescription)
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="hero-image" data-aos="zoom-out" data-aos-delay="300">
+                    <img src="~/Pictures/SystemSetting/@Model.Setting.SystemSettingWelcomeNoteImageUrl" alt="Consulting Services" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Clients Section -->
+<section id="clients" class="clients section">
+    <div data-aos="fade-up" data-aos-delay="100">
+        <div class="clients-slider swiper init-swiper">
+
+            <script type="application/json" class="swiper-config">
+                {
+                  "loop": true,
+                  "speed": 6000,
+                  "autoplay": {
+                    "delay": 1,
+                    "disableOnInteraction": false
+                  },
+                  "centeredSlides": true,
+                  "slideToClickedSlide": true,
+                  "slidesPerView": "auto",
+                  "spaceBetween": 40,
+                  "breakpoints": {
+                    "320": {
+                      "slidesPerView": 2,
+                      "spaceBetween": 20
+                    },
+                    "640": {
+                      "slidesPerView": 3,
+                      "spaceBetween": 20
+                    },
+                    "992": {
+                      "slidesPerView": 4,
+                      "spaceBetween": 30
+                    },
+                    "1200": {
+                      "slidesPerView": 6,
+                      "spaceBetween": 40
+                    }
+                  }
+                }
+            </script>
+
+            <div class="swiper-wrapper">
+                @foreach (var item in Model.ListPartner)
+                {
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="~/Pictures/MasterPartner/@item.MasterPartnerLogoImageUrl" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                }
+                @foreach (var item in Model.ListPartner)
+                {
+                    <div class="swiper-slide">
+                        <div class="client-logo">
+                            <img src="~/Pictures/MasterPartner/@item.MasterPartnerLogoImageUrl" class="img-fluid" alt="">
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about section light-background">
+
+    <div class="container section-title" data-aos="fade-up">
+        <h2>About</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 align-items-center justify-content-between">
+
+            <div class="col-xl-5" data-aos="fade-up" data-aos-delay="200">
+                <span class="about-meta">@Model.Setting.SystemSettingAboutTitle</span>
+                <h2 class="about-title">@Model.Setting.SystemSettingAboutBreef</h2>
+                @Html.Raw(Model.Setting.SystemSettingAboutDescription)
+
+                <div class="info-wrapper">
+                    <div class="row gy-4">
+                        <div class="col-lg-5">
+                            <div class="profile d-flex align-items-center gap-3">
+                                <img src="~/Pictures/SystemSetting/@Model.Setting.SystemSettingAboutProfileImageUrl" alt="CEO Profile" class="profile-image">
+                                <div>
+                                    <h4 class="profile-name">@Model.Setting.SystemSettingAboutProfileName</h4>
+                                    <p class="profile-position">@Model.Setting.SystemSettingAboutProfilePosition</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="contact-info d-flex align-items-center gap-2">
+                                @Html.Raw(Model.Setting.SystemSettingAboutIconPhone)
+                                <div>
+                                    <p class="contact-label">Call us anytime</p>
+                                    <p class="contact-number">@Model.Setting.SystemSettingAboutPhone</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="image-wrapper">
+                    <div class="images position-relative" data-aos="zoom-out" data-aos-delay="400">
+                        <img src="~/Pictures/SystemSetting/@Model.Setting.SystemSettingAboutImageUrl1" alt="Business Meeting" class="img-fluid main-image rounded-4">
+                        <img src="~/Pictures/SystemSetting/@Model.Setting.SystemSettingAboutImageUrl2" alt="Team Discussion" class="img-fluid small-image rounded-4">
+                    </div>
+                    <div class="experience-badge floating">
+                        @Html.Raw(Model.Setting.SystemSettingAboutExperience)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Stats Section -->
+<section id="stats" class="stats section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="stats-hero row align-items-center mb-5">
+            <div class="col-lg-7 mb-4 mb-lg-0" data-aos="fade-right" data-aos-delay="200">
+                <h3 class="headline mb-3">Transforming Data Into Impactful Insights</h3>
+                <p class="lead"> @Model.TransformingData.MasterTransformingDataDescription</p>
+            </div>
+            <div class="col-lg-5 text-lg-end text-center" data-aos="zoom-in" data-aos-delay="300">
+                <div class="stats-rating d-inline-flex align-items-center py-3 px-4 shadow-sm">
+                    <img src="~/Pictures/MasterTransformingData/@Model.TransformingData.MasterTransformingDataRateImageUrl" class="img-fluid stats-rating-img me-3" alt="User Group" width="64" height="48">
+                    <div>
+                        <div class="rating-score d-flex align-items-center mb-1">
+                            <span class="fs-5 fw-semibold me-2">@Model.TransformingData.MasterTransformingDataRateNumber</span>
+                            <span class="stars">
+                                @Html.Raw(Model.TransformingData.MasterTransformingDataRateStar)
+                            </span>
+                        </div>
+                        <div class="user-feedback small">@Model.TransformingData.MasterTransformingDataRateTitle</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="stats-counters row gy-4 justify-content-center">
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+                <article class="stats-counter-card">
+                    @Html.Raw(Model.TransformingData.MasterTransformingDataActiveClients)
+                </article>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+                <article class="stats-counter-card">
+                    @Html.Raw(Model.TransformingData.MasterTransformingDataAnalyticsProjects)
+                </article>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+                <article class="stats-counter-card">
+                    @Html.Raw(Model.TransformingData.MasterTransformingDataAutomationSuccess)
+                </article>
+            </div>
+            <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+                <article class="stats-counter-card">
+                    @Html.Raw(Model.TransformingData.MasterTransformingDataCloudReliability)
+                </article>
+            </div>
+        </div><!-- End stats counters -->
+
+    </div>
+
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services section">
+
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Services</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 justify-content-center">
+            @foreach (var item in Model.ListServices)
+            {
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <article class="service-item">
+                        <span class="service-icon rounded-circle">
+                            @Html.Raw(item.MasterServicesIcon)
+                        </span>
+                        <h3>
+                            <a href="@Url.Action("ServiceDetails", new { idDetails = item.MasterServicesId })">
+                                @Html.Raw(item.MasterServicesTitle)
+                            </a>
+                        </h3>
+                        @Html.Raw(item.MasterServicesDescription)
+                        <a href="@Url.Action("ServiceDetails", new { idDetails = item.MasterServicesId })"
+                           class="card-action rounded-circle d-flex align-items-center justify-content-center">
+                            @Html.Raw(item.MasterServicesUrl)
+                        </a>
+                    </article>
+                </div>
+            }
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Alt Services Section -->
+<section id="alt-services" class="alt-services section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4">
+            @foreach (var item in Model.ListService)
+            {
+                var animation = item.MasterServiceId == 2 ? "service-card featured" : "service-card";
+                <div class="col-lg-6 col-xl-3">
+                    <div class="@animation" data-aos="zoom-in">
+                        <div class="card-header">
+                            <div class="icon-box">
+                                @Html.Raw(item.MasterServiceIcon)
+                            </div>
+                            @Html.Raw(item.MasterServiceTitle)
+                        </div>
+
+                        <div class="card-body">
+                            @Html.Raw(item.MasterServiceDescription)
+                            <div class="feature-image">
+                                <img src="~/Pictures/MasterService/@item.MasterServiceImageUrl" alt="Security Services" class="img-fluid">
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            @Html.Raw(item.MasterServiceUrl)
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="features section">
+
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Features</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row align-items-center mb-5">
+            <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+                <div class="features-intro">
+                    @Html.Raw(Model.Feature.MasterFeatureTitle)
+                    @Html.Raw(Model.Feature.MasterFeatureBreef)
+                    @Html.Raw(Model.Feature.MasterFeatureDescription)
+                </div>
+            </div>
+            <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
+                <div class="featured-image-container">
+                    <img src="~/Pictures/MasterFeature/@Model.Feature.MasterFeatureImageUrl" alt="Digital Solutions" class="img-fluid">
+                    <div class="floating-badge">
+                        <i class="bi bi-award"></i>
+                        <span>Industry Leader</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="features-grid">
+            <div class="row g-4">
+                @foreach (var item in Model.ListFeatures)
+                {
+                    <div class="col-xl-3 col-lg-4 col-md-6" data-aos="zoom-in">
+                        <div class="feature-box text-center">
+                            <div class="feature-icon-wrapper">
+                                @Html.Raw(item.MasterFeaturesIcon)
+                            </div>
+                            @Html.Raw(item.MasterFeaturesTitle)
+                            @Html.Raw(item.MasterFeaturesDescription)
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="advanced-features-section" data-aos="fade-up" data-aos-delay="100">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Advanced Capabilities</h3>
+                    <p>Discover powerful features designed to elevate your business operations to the next level of excellence.</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                @foreach (var item in Model.ListAdvancedCapabilities)
+                {
+                    var animation = item.MasterAdvancedCapabilitiesId % 2 == 0 ? "fade-left" : "fade-right";
+                    <div class="col-lg-6" data-aos="@animation">
+                        <div class="advanced-feature-card">
+                            <div class="feature-header">
+                                @Html.Raw(item.MasterAdvancedCapabilitiesTitle)
+                            </div>
+                            <div class="feature-content">
+                                @Html.Raw(item.MasterAdvancedCapabilitiesBreef)
+                                @Html.Raw(item.MasterAdvancedCapabilitiesDescription)
+                            </div>
+                            <div class="feature-icon-bg">
+                                @Html.Raw(item.MasterAdvancedCapabilitiesIcon)
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Why Us Section -->
+<section id="why-us" class="why-us section">
+
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Why Us</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 align-items-center">
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <div class="row gy-4">
+
+                    @foreach (var item in Model.ListWhyUs)
+                    {
+                        <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
+                            <div class="card-item">
+                                <div class="card-number">@item.MasterWhyUsTitle</div>
+                                <h3>@item.MasterWhyUsBreef</h3>
+                                <p>@item.MasterWhyUsDescription</p>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <div class="col-lg-5" data-aos="zoom-out" data-aos-delay="300">
+                <div class="image-wrapper">
+                    @{
+                        // var imageItem = Model.ListWhyUs.FirstOrDefault(x => x.MasterWhyUsId == 1);
+                        // if (imageItem != null)
+                        // {
+                        //     <img src="~/Pictures/MasterWhyUs/@imageItem.MasterWhyUsImageUrl" alt="" class="img-fluid rounded-4">
+                        // }
+
+                        var imageItem = Model.ListWhyUs.FirstOrDefault(x => !string.IsNullOrEmpty(x.MasterWhyUsImageUrl));
+                        if (imageItem != null)
+                        {
+                            <img src="~/Pictures/MasterWhyUs/@imageItem.MasterWhyUsImageUrl" alt="" class="img-fluid rounded-4">
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Call To Action Section -->
+<section id="call-to-action" class="call-to-action section">
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="cta-wrapper">
+            <div class="background-pattern">
+                <div class="wave"></div>
+                <div class="geometric-shape shape-1"></div>
+                <div class="geometric-shape shape-2"></div>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2">
+                    <div class="image-section" data-aos="fade-left" data-aos-delay="200">
+                        <div class="main-image-wrapper">
+                            <img src="~/Pictures/MasterFocus/@Model.Focus.MasterFocusImageUrl" alt="Focus Image" class="img-fluid main-img">
+                            <div class="overlay-circle circle-1"></div>
+                            <div class="overlay-circle circle-2"></div>
+                        </div>
+
+                        <div class="stats-card card-1" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="stat-icon">
+                                @Html.Raw(Model.Focus.MasterFocusPercentageRateIcon1)
+                            </div>
+                            <div class="stat-content">
+                                @Html.Raw(Model.Focus.MasterFocusPercentageRate1)
+                            </div>
+                        </div>
+
+                        <div class="stats-card card-2" data-aos="zoom-in" data-aos-delay="500">
+                            <div class="stat-icon">
+                                @Html.Raw(Model.Focus.MasterFocusPercentageRateIcon2)
+                            </div>
+                            <div class="stat-content">
+                                @Html.Raw(Model.Focus.MasterFocusPercentageRate2)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 order-lg-1">
+                    <div class="content-section" data-aos="fade-right" data-aos-delay="300">
+                        <div class="label-badge" data-aos="fade-up" data-aos-delay="400">
+                            <i class="bi bi-rocket-takeoff"></i>
+                            <span>@Model.Focus.MasterFocusTitle</span>
+                        </div>
+
+                        <h2 data-aos="fade-up" data-aos-delay="450">@Model.Focus.MasterFocusBreef</h2>
+                        
+                        @Html.Raw(Model.Focus.MasterFocusDescription)
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Portfolio Section -->
+<section id="portfolio" class="portfolio section">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Portfolio</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="container">
+        <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
+            @if (Model.ListPortfolioCategoryMenu.Count != 0 && Model.ListPortfolioItemMenu.Count != 0)
+            {
+                <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+                    <li data-filter="*" class="filter-active">All</li>
+                    @foreach (var category in Model.ListPortfolioCategoryMenu)
+                    {
+                        <li data-filter=".filter-@category.MasterPortfolioCategoryMenuId">
+                            @category.MasterPortfolioCategoryMenuName
+                        </li>
+                    }
+                </ul>
+
+                <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
+                    @foreach (var item in Model.ListPortfolioItemMenu)
+                    {
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-@item.MasterPortfolioCategoryMenuId">
+                            <div class="portfolio-content h-100">
+                                <a href="~/Pictures/MasterPortfolioItemMenu/@item.MasterPortfolioItemMenuImageUrl"
+                                   data-gallery="portfolio-gallery-app" class="glightbox">
+                                    <img src="~/Pictures/MasterPortfolioItemMenu/@item.MasterPortfolioItemMenuImageUrl" class="img-fluid" alt="">
+                                </a>
+                                <div class="portfolio-info">
+                                    <h4>
+                                        @Html.ActionLink(item.MasterPortfolioItemMenuTitle, "PortfolioDetails", new { idDetails = item.MasterPortfolioItemMenuId })
+                                    </h4>
+                                    @Html.Raw(item.MasterPortfolioItemMenuBreef)
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Section -->
+<section id="pricing" class="pricing section light-background">
+
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Pricing</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row g-4 justify-content-center">
+
+            @foreach (var item in Model.ListPricing)
+            {
+                var activeClass = item.MasterPricingId == 2 ? "pricing-card popular" : "pricing-card";
+                <div class="col-lg-4" data-aos="fade-up">
+                    <div class="@activeClass">
+                        @Html.Raw(item.MasterPricingTitle)
+                        @Html.Raw(item.MasterPricingBreef)
+                        @Html.Raw(item.MasterPricingDescription)
+                        @Html.Raw(item.MasterPricingUrl)
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Faq Section -->
+<section id="faq" class="faq section">
+
+    <div class="container">
+
+        <div class="row gy-4">
+
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="content px-xl-5">
+                    <h3><span>Frequently Asked </span><strong>Questions</strong></h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-8" data-aos="fade-up" data-aos-delay="200">
+
+                <div class="faq-container">
+                    @foreach (var item in Model.ListQuestions)
+                    {
+                        var activeClass = item.MasterQuestionsId == 1 ? "faq-item faq-active" : "faq-item";
+                        <div class="@activeClass">
+                            @Html.Raw(item.MasterQuestionsTitle)
+                            @Html.Raw(item.MasterQuestionsDescription)
+                            <i class="faq-toggle bi bi-chevron-right"></i>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Team Section -->
+<section id="team" class="team section">
+
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Team</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+
+        <div class="row gy-4 justify-content-center">
+
+            @foreach (var item in Model.ListTeam)
+            {
+                <div class="col-xl-3 col-lg-4 col-md-6" data-aos="fade-up">
+                    <div class="team-card">
+                        <div class="profile-image">
+                            <img src="~/Pictures/MasterTeam/@item.MasterTeamImageUrl" class="img-fluid" alt="" loading="lazy">
+                            @Html.Raw(item.MasterTeamTitle)
+                            <div class="social-icons">
+                                <a href="@item.MasterTeamIconUrl">@Html.Raw(item.MasterTeamIcon)</a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            @Html.Raw(item.MasterTeamBreef)
+                            @Html.Raw(item.MasterTeamDescription)
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact section light-background">
+    <div class="container section-title" data-aos="fade-up">
+        <h2>Contact</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+    </div>
+
+    <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row g-4 g-lg-5">
+
+            <div class="col-lg-5">
+                <div class="info-box" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Contact Info</h3>
+                    <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante ipsum primis.</p>
+
+                    <div class="info-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon-box">
+                            @Html.Raw(Model.ContactUsInformation1.MasterContactUsInformationIcon)
+                        </div>
+                        <div class="content">
+                            @Html.Raw(Model.ContactUsInformation1.MasterContactUsInformationDescription)
+                        </div>
+                    </div>
+
+                    <div class="info-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="icon-box">
+                            @Html.Raw(Model.ContactUsInformation2.MasterContactUsInformationIcon)
+                        </div>
+                        <div class="content">
+                            @Html.Raw(Model.ContactUsInformation2.MasterContactUsInformationDescription)
+                        </div>
+                    </div>
+
+                    <div class="info-item" data-aos="fade-up" data-aos-delay="500">
+                        <div class="icon-box">
+                            @Html.Raw(Model.ContactUsInformation3.MasterContactUsInformationIcon);
+                        </div>
+                        <div class="content">
+                            @Html.Raw(Model.ContactUsInformation3.MasterContactUsInformationDescription)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="contact-form" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Get In Touch</h3>
+                    <p>Praesent sapien massa, convallis a pellentesque nec, egestas non nisi. Vestibulum ante ipsum primis.</p>
+
+                    <form asp-action="ContactUs" data-aos="fade-up" data-aos-delay="200">
+                        <div class="row gy-4">
+
+                            <div class="col-md-6">
+                                <input asp-for="ContactUs.TransactionContactUsName" class="form-control" placeholder="Your Name" required="">
+                            </div>
+
+                            <div class="col-md-6 ">
+                                <input asp-for="ContactUs.TransactionContactUsEmail" class="form-control" placeholder="Your Email" required="">
+                            </div>
+
+                            <div class="col-12">
+                                <input asp-for="ContactUs.TransactionContactUsSubject" class="form-control" placeholder="Subject" required="">
+                            </div>
+
+                            <div class="col-12">
+                                <textarea asp-for="ContactUs.TransactionContactUsMessage" class="form-control" rows="6" placeholder="Message" required=""></textarea>
+                            </div>
+
+                            <div class="col-12 text-center">
+                                <button type="submit" class="btn">Send Message</button>
+                            </div>
+
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

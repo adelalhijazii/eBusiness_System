@@ -1,0 +1,38 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterSocialMediumViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">New SocialMedium</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="MasterSocialMediumId" class="form-control" type="hidden" value="0" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterSocialMediumIcon" class="form-label"></label>
+                <input asp-for="MasterSocialMediumIcon" class="form-control" placeholder="Enter Icon" />
+                <span asp-validation-for="MasterSocialMediumIcon" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterSocialMediumUrl" class="form-label"></label>
+                <input asp-for="MasterSocialMediumUrl" class="form-control" placeholder="Enter URL" />
+                <span asp-validation-for="MasterSocialMediumUrl" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>

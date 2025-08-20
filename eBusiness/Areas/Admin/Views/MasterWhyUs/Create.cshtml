@@ -1,0 +1,52 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterWhyUsViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">New Service</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="MasterWhyUsId" class="form-control" type="hidden" value="0" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterWhyUsTitle" class="form-label"></label>
+                <input asp-for="MasterWhyUsTitle" class="form-control" placeholder="Enter Title" />
+                <span asp-validation-for="MasterWhyUsTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterWhyUsBreef" class="form-label"></label>
+                <input asp-for="MasterWhyUsBreef" class="form-control" placeholder="Enter Breef" />
+                <span asp-validation-for="MasterWhyUsBreef" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterWhyUsDescription" class="form-label"></label>
+                <textarea asp-for="MasterWhyUsDescription" class="form-control" placeholder="Enter Description"></textarea>
+                <span asp-validation-for="MasterWhyUsDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterWhyUsFile" class="form-label"></label>
+                <input asp-for="MasterWhyUsFile" type="file" class="form-control" />
+                <span asp-validation-for="MasterWhyUsFile" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>

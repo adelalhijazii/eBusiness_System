@@ -1,0 +1,59 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterServiceViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">New Service</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="MasterServiceId" class="form-control" type="hidden" value="0" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterServiceIcon" class="form-label"></label>
+                <input asp-for="MasterServiceIcon" class="form-control" placeholder="Enter Icon" />
+                <span asp-validation-for="MasterServiceIcon" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterServiceTitle" class="form-label"></label>
+                <input asp-for="MasterServiceTitle" class="form-control" placeholder="Enter Title" />
+                <span asp-validation-for="MasterServiceTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterServiceUrl" class="form-label"></label>
+                <input asp-for="MasterServiceUrl" class="form-control" placeholder="Enter Url" />
+                <span asp-validation-for="MasterServiceUrl" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterServiceDescription" class="form-label"></label>
+                <textarea asp-for="MasterServiceDescription" class="form-control" placeholder="Enter Description"></textarea>
+                <span asp-validation-for="MasterServiceDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterServiceFile" class="form-label"></label>
+                <input asp-for="MasterServiceFile" type="file" class="form-control" />
+                <span asp-validation-for="MasterServiceFile" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>

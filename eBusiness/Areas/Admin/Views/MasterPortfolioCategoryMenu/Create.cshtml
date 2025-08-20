@@ -1,0 +1,31 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterPortfolioCategoryMenuViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">New PortfolioCategoryMenu</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="MasterPortfolioCategoryMenuId" class="form-control" type="hidden" value="0" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterPortfolioCategoryMenuName" class="form-label"></label>
+                <input asp-for="MasterPortfolioCategoryMenuName" class="form-control" placeholder="Enter Title" />
+                <span asp-validation-for="MasterPortfolioCategoryMenuName" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>

@@ -1,0 +1,114 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterFocusViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">Edit Focus</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="MasterFocusId" />
+    <input type="hidden" asp-for="CreateUser" />
+    <input type="hidden" asp-for="CreateDate" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFocusTitle" class="form-label"></label>
+                <input asp-for="MasterFocusTitle" class="form-control" />
+                <span asp-validation-for="MasterFocusTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFocusBreef" class="form-label"></label>
+                <input asp-for="MasterFocusBreef" class="form-control" />
+                <span asp-validation-for="MasterFocusBreef" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFocusPercentageRateIcon1" class="form-label"></label>
+                <input asp-for="MasterFocusPercentageRateIcon1" class="form-control" />
+                <span asp-validation-for="MasterFocusPercentageRateIcon1" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFocusPercentageRate1" class="form-label"></label>
+                <input asp-for="MasterFocusPercentageRate1" class="form-control" />
+                <span asp-validation-for="MasterFocusPercentageRate1" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFocusPercentageRateIcon2" class="form-label"></label>
+                <input asp-for="MasterFocusPercentageRateIcon2" class="form-control" />
+                <span asp-validation-for="MasterFocusPercentageRateIcon2" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFocusPercentageRate2" class="form-label"></label>
+                <input asp-for="MasterFocusPercentageRate2" class="form-control" />
+                <span asp-validation-for="MasterFocusPercentageRate2" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFocusDescription" class="form-label"></label>
+                <textarea asp-for="MasterFocusDescription" class="form-control" rows="6"></textarea>
+                <span asp-validation-for="MasterFocusDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFocusFile" class="form-label"></label>
+                <input asp-for="MasterFocusFile" class="form-control" onchange="previewImage(this)" />
+                <span asp-validation-for="MasterFocusFile" class="text-danger"></span>
+                <input type="hidden" asp-for="MasterFocusImageUrl" />
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <div class="mt-3">
+                    <img id="preview" src="@(string.IsNullOrEmpty(Model.MasterFocusImageUrl) ? "" : Url.Content("~/Pictures/MasterFocus/" + Model.MasterFocusImageUrl))"
+                         class="img-thumbnail" style="max-height: 70px; max-width:70px;" alt="Focus Image" />
+                </div>
+            </div>
+        </div>
+        @* <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFocusFile" class="form-label"></label>
+                <input asp-for="MasterFocusFile" class="form-control" />
+                <span asp-validation-for="MasterFocusFile" class="text-danger"></span>
+                <input type="hidden" asp-for="MasterFocusImageUrl" class="form-control" />
+            </div>
+        </div> *@
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>
+
+<script>
+    function previewImage(input) {
+        const preview = document.getElementById('preview');
+        const file = input.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>

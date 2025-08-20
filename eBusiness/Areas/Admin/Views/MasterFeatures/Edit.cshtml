@@ -1,0 +1,47 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterFeaturesViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">Edit Features</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="MasterFeaturesId" />
+    <input type="hidden" asp-for="CreateUser" />
+    <input type="hidden" asp-for="CreateDate" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFeaturesIcon" class="form-label"></label>
+                <input asp-for="MasterFeaturesIcon" class="form-control" />
+                <span asp-validation-for="MasterFeaturesIcon" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFeaturesTitle" class="form-label"></label>
+                <input asp-for="MasterFeaturesTitle" class="form-control" />
+                <span asp-validation-for="MasterFeaturesTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterFeaturesDescription" class="form-label"></label>
+                <textarea asp-for="MasterFeaturesDescription" class="form-control" rows="6"></textarea>
+                <span asp-validation-for="MasterFeaturesDescription" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>

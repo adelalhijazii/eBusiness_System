@@ -1,0 +1,58 @@
+﻿@model eBusiness.ViewModels.HomeViewModel
+
+@{
+    ViewData["Title"] = "ServiceDetails";
+}
+
+<div class="page-title dark-background">
+    <div class="container position-relative">
+        <h1>Service Details</h1>
+        <p>Esse dolorum voluptatum ullam est sint nemo et est ipsa porro placeat quibusdam quia assumenda numquam molestias.</p>
+        <nav class="breadcrumbs">
+            <ol>
+                <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                <li class="current">Service Details</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<section id="service-details" class="service-details section">
+    <div class="container">
+        <div class="row gy-5">
+
+            <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+
+                <div class="service-box">
+                    <h4>Services List</h4>
+                    <div class="services-list">
+                        @Html.Raw(Model.Services.MasterServicesDetailsList)
+                    </div>
+                </div>
+
+                <div class="help-box d-flex flex-column justify-content-center align-items-center">
+                    <i class="bi bi-headset help-icon"></i>
+                    <h4>Have a Question?</h4>
+                    <p class="d-flex align-items-center mt-2 mb-0">
+                        @Html.Raw(Model.Services.MasterServicesDetailsIconPhone)
+                        <span>@Model.Services.MasterServicesDetailsPhone</span>
+                    </p>
+                    <p class="d-flex align-items-center mt-1 mb-0">
+                        @Html.Raw(Model.Services.MasterServicesDetailsIconEmail)
+                        <a href="mailto:@Model.Services.MasterServicesDetailsEmail">@Model.Services.MasterServicesDetailsEmail</a>
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+                <img src="~/Pictures/MasterServices/@Model.Services.MasterServicesDetailsImageUrl" alt="" class="img-fluid services-img">
+                <h3>@Model.Services.MasterServicesDetailsTitle</h3>
+                <p>@Model.Services.MasterServicesDetailsBreef</p>
+                <ul>@Html.Raw(Model.Services.MasterServicesDetailsListDescription)</ul>
+                @Html.Raw(Model.Services.MasterServicesDetailsFullDescription)
+            </div>
+
+        </div>
+    </div>
+</section>

@@ -1,0 +1,89 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterTransformingDataViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">New Service</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="MasterTransformingDataId" class="form-control" type="hidden" value="0" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataRateNumber" class="form-label"></label>
+                <input asp-for="MasterTransformingDataRateNumber" class="form-control" placeholder="Enter RateNumber" />
+                <span asp-validation-for="MasterTransformingDataRateNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataRateStar" class="form-label"></label>
+                <input asp-for="MasterTransformingDataRateStar" class="form-control" placeholder="Enter RateStar" />
+                <span asp-validation-for="MasterTransformingDataRateStar" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataRateTitle" class="form-label"></label>
+                <input asp-for="MasterTransformingDataRateTitle" class="form-control" placeholder="Enter RateTitle" />
+                <span asp-validation-for="MasterTransformingDataRateTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataDescription" class="form-label"></label>
+                <textarea asp-for="MasterTransformingDataDescription" class="form-control" placeholder="Enter Description"></textarea>
+                <span asp-validation-for="MasterTransformingDataDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-8 mb-3"></div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataFile" class="form-label"></label>
+                <input asp-for="MasterTransformingDataFile" type="file" class="form-control" />
+                <span asp-validation-for="MasterTransformingDataFile" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-8 mb-3"></div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataActiveClients" class="form-label"></label>
+                <input asp-for="MasterTransformingDataActiveClients" class="form-control" placeholder="Enter ActiveClients" />
+                <span asp-validation-for="MasterTransformingDataActiveClients" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataAnalyticsProjects" class="form-label"></label>
+                <input asp-for="MasterTransformingDataAnalyticsProjects" class="form-control" placeholder="Enter AnalyticsProjects" />
+                <span asp-validation-for="MasterTransformingDataAnalyticsProjects" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataAutomationSuccess" class="form-label"></label>
+                <input asp-for="MasterTransformingDataAutomationSuccess" class="form-control" placeholder="Enter AutomationSuccess" />
+                <span asp-validation-for="MasterTransformingDataAutomationSuccess" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataCloudReliability" class="form-label"></label>
+                <input asp-for="MasterTransformingDataCloudReliability" class="form-control" placeholder="Enter CloudReliability" />
+                <span asp-validation-for="MasterTransformingDataCloudReliability" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>

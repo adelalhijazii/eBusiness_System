@@ -1,0 +1,37 @@
+﻿.sidebar-link.active {
+    color: #568fed !important;
+}
+
+.sidebar-link.active i {
+    color: #568fed !important;
+}
+
+.sidebar-item > .sidebar-link {
+    color: inherit;
+    transition: color 0.2s ease;
+}
+
+.sidebar-item > .sidebar-dropdown.show ~ .sidebar-link,
+.sidebar-item > .show ~ .sidebar-link {
+    color: #e9ecef !important;
+}
+
+.sidebar-item:has(.sidebar-dropdown.show) > .sidebar-link {
+    color: #e9ecef;
+}
+
+.sidebar-item:has(.sidebar-dropdown.show) > .sidebar-link {
+    color: #e9ecef;
+}
+
+.sidebar-item:has(.sidebar-dropdown.show) > .sidebar-link svg.feather {
+    stroke: #e9ecef;
+}
+
+.sidebar-link.appuser-active {
+    color: #e9ecef !important;
+}
+
+.sidebar-link.appuser-active svg.feather {
+    stroke: #e9ecef !important;
+}

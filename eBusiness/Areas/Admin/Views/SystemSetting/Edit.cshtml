@@ -1,0 +1,241 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.SystemSettingViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">Edit SystemSetting</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="SystemSettingId" />
+    <input type="hidden" asp-for="CreateUser" />
+    <input type="hidden" asp-for="CreateDate" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingLogoImageUrl" class="form-label"></label>
+                <input asp-for="SystemSettingLogoImageUrl" class="form-control" />
+                <span asp-validation-for="SystemSettingLogoImageUrl" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingWelcomeNoteTitle" class="form-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteTitle" class="form-control" />
+                <span asp-validation-for="SystemSettingWelcomeNoteTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingWelcomeNoteBreef" class="form-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteBreef" class="form-control" />
+                <span asp-validation-for="SystemSettingWelcomeNoteBreef" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingCopyright" class="form-label"></label>
+                <input asp-for="SystemSettingCopyright" class="form-control" />
+                <span asp-validation-for="SystemSettingCopyright" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingWelcomeNoteDescription" class="form-label"></label>
+                <textarea asp-for="SystemSettingWelcomeNoteDescription" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="SystemSettingWelcomeNoteDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3"></div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingWelcomeNoteImageUrlFile" class="form-label"></label>
+                <input asp-for="SystemSettingWelcomeNoteImageUrlFile" class="form-control" onchange="previewWelcomeNoteImageUrl(this)" />
+                <span asp-validation-for="SystemSettingWelcomeNoteImageUrlFile" class="text-danger"></span>
+                <input type="hidden" asp-for="SystemSettingWelcomeNoteImageUrl" />
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <div class="mt-3">
+                    <img id="WelcomeNoteImageUrl" src="@(string.IsNullOrEmpty(Model.SystemSettingWelcomeNoteImageUrl) ? "" : Url.Content("~/Pictures/SystemSetting/" + Model.SystemSettingWelcomeNoteImageUrl))"
+                         class="img-thumbnail" style="max-height: 70px; max-width:70px;" alt="WelcomeNote" />
+                </div>
+            </div>
+        </div>
+        <div class="col-4 mb-3"></div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingAboutTitle" class="form-label"></label>
+                <input asp-for="SystemSettingAboutTitle" class="form-control" />
+                <span asp-validation-for="SystemSettingAboutTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingAboutBreef" class="form-label"></label>
+                <input asp-for="SystemSettingAboutBreef" class="form-control" />
+                <span asp-validation-for="SystemSettingAboutBreef" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingAboutDescription" class="form-label"></label>
+                <textarea asp-for="SystemSettingAboutDescription" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="SystemSettingAboutDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingAboutProfileImageUrlFile" class="form-label"></label>
+                <input asp-for="SystemSettingAboutProfileImageUrlFile" class="form-control" onchange="previewAboutProfileImageUrl(this)" />
+                <span asp-validation-for="SystemSettingAboutProfileImageUrlFile" class="text-danger"></span>
+                <input type="hidden" asp-for="SystemSettingAboutProfileImageUrl" />
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <div class="mt-3">
+                    <img id="AboutProfileImageUrl" src="@(string.IsNullOrEmpty(Model.SystemSettingAboutProfileImageUrl) ? "" : Url.Content("~/Pictures/SystemSetting/" + Model.SystemSettingAboutProfileImageUrl))"
+                         class="img-thumbnail" style="max-height: 70px; max-width:70px;" alt="AboutProfile" />
+                </div>
+            </div>
+        </div>
+        <div class="col-4 mb-3"></div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingAboutProfileName" class="form-label"></label>
+                <input asp-for="SystemSettingAboutProfileName" class="form-control" />
+                <span asp-validation-for="SystemSettingAboutProfileName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingAboutProfilePosition" class="form-label"></label>
+                <input asp-for="SystemSettingAboutProfilePosition" class="form-control" />
+                <span asp-validation-for="SystemSettingAboutProfilePosition" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingAboutIconPhone" class="form-label"></label>
+                <input asp-for="SystemSettingAboutIconPhone" class="form-control" />
+                <span asp-validation-for="SystemSettingAboutIconPhone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingAboutPhone" class="form-label"></label>
+                <input asp-for="SystemSettingAboutPhone" class="form-control" />
+                <span asp-validation-for="SystemSettingAboutPhone" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingAboutExperience" class="form-label"></label>
+                <input asp-for="SystemSettingAboutExperience" class="form-control" />
+                <span asp-validation-for="SystemSettingAboutExperience" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3"></div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingAboutImageUrlFile1" class="form-label"></label>
+                <input asp-for="SystemSettingAboutImageUrlFile1" class="form-control" onchange="previewAboutImageUrlFile1(this)" />
+                <span asp-validation-for="SystemSettingAboutImageUrlFile1" class="text-danger"></span>
+                <input type="hidden" asp-for="SystemSettingAboutImageUrl1" />
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <div class="mt-3">
+                    <img id="AboutImageUrl1" src="@(string.IsNullOrEmpty(Model.SystemSettingAboutImageUrl1) ? "" : Url.Content("~/Pictures/SystemSetting/" + Model.SystemSettingAboutImageUrl1))"
+                         class="img-thumbnail" style="max-height: 70px; max-width:70px;" alt="AboutImageUrl1" />
+                </div>
+            </div>
+        </div>
+        <div class="col-4 mb-3"></div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="SystemSettingAboutImageUrlFile2" class="form-label"></label>
+                <input asp-for="SystemSettingAboutImageUrlFile2" class="form-control" onchange="previewAboutImageUrlFile2(this)" />
+                <span asp-validation-for="SystemSettingAboutImageUrlFile2" class="text-danger"></span>
+                <input type="hidden" asp-for="SystemSettingAboutImageUrl2" />
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <div class="mt-3">
+                    <img id="AboutImageUrl2" src="@(string.IsNullOrEmpty(Model.SystemSettingAboutImageUrl2) ? "" : Url.Content("~/Pictures/SystemSetting/" + Model.SystemSettingAboutImageUrl2))"
+                         class="img-thumbnail" style="max-height: 70px; max-width:70px;" alt="AboutProfile" />
+                </div>
+            </div>
+        </div>
+        <div class="col-4 mb-3"></div>
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>
+
+<script>
+    function previewWelcomeNoteImageUrl(input) {
+        const WelcomeNoteImageUrl = document.getElementById('WelcomeNoteImageUrl');
+        const file = input.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                WelcomeNoteImageUrl.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function previewAboutProfileImageUrl(input) {
+        const AboutProfileImageUrl = document.getElementById('AboutProfileImageUrl');
+        const file = input.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                AboutProfileImageUrl.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function previewAboutImageUrlFile1(input) {
+        const AboutImageUrl1 = document.getElementById('AboutImageUrl1');
+        const file = input.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                AboutImageUrl1.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+
+    function previewAboutImageUrlFile2(input) {
+        const AboutImageUrl2 = document.getElementById('AboutImageUrl2');
+        const file = input.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                AboutImageUrl2.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>

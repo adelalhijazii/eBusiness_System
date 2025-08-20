@@ -1,0 +1,101 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterTeamViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">Edit Team</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="MasterTeamId" />
+    <input type="hidden" asp-for="CreateUser" />
+    <input type="hidden" asp-for="CreateDate" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamTitle" class="form-label"></label>
+                <input asp-for="MasterTeamTitle" class="form-control" />
+                <span asp-validation-for="MasterTeamTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamBreef" class="form-label"></label>
+                <input asp-for="MasterTeamBreef" class="form-control" />
+                <span asp-validation-for="MasterTeamBreef" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamDescription" class="form-label"></label>
+                <textarea asp-for="MasterTeamDescription" class="form-control"></textarea>
+                <span asp-validation-for="MasterTeamDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamIcon" class="form-label"></label>
+                <input asp-for="MasterTeamIcon" class="form-control" />
+                <span asp-validation-for="MasterTeamIcon" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamIconUrl" class="form-label"></label>
+                <input asp-for="MasterTeamIconUrl" class="form-control" />
+                <span asp-validation-for="MasterTeamIconUrl" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3"></div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamFile" class="form-label"></label>
+                <input asp-for="MasterTeamFile" class="form-control" onchange="previewImage(this)" />
+                <span asp-validation-for="MasterTeamFile" class="text-danger"></span>
+                <input type="hidden" asp-for="MasterTeamImageUrl" />
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <div class="mt-3">
+                    <img id="preview" src="@(string.IsNullOrEmpty(Model.MasterTeamImageUrl) ? "" : Url.Content("~/Pictures/MasterTeam/" + Model.MasterTeamImageUrl))"
+                         class="img-thumbnail rounded-circle" style="max-height: 70px; max-width:70px;" alt="Team Image" />
+                </div>
+            </div>
+        </div>
+        @* <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamFile" class="form-label"></label>
+                <input asp-for="MasterTeamFile" class="form-control" />
+                <span asp-validation-for="MasterTeamFile" class="text-danger"></span>
+                <input type="hidden" asp-for="MasterTeamImageUrl" class="form-control" />
+            </div>
+        </div> *@
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>
+
+<script>
+    function previewImage(input) {
+        const preview = document.getElementById('preview');
+        const file = input.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>

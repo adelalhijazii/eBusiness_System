@@ -1,0 +1,54 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.TransactionContactUsViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">Edit ContactUs</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="TransactionContactUsId" />
+    <input type="hidden" asp-for="CreateUser" />
+    <input type="hidden" asp-for="CreateDate" />
+    <div class="row m-0">
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="TransactionContactUsName" class="form-label"></label>
+                <input asp-for="TransactionContactUsName" class="form-control" />
+                <span asp-validation-for="TransactionContactUsName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="TransactionContactUsEmail" class="form-label"></label>
+                <input asp-for="TransactionContactUsEmail" class="form-control" />
+                <span asp-validation-for="TransactionContactUsEmail" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="TransactionContactUsSubject" class="form-label"></label>
+                <input asp-for="TransactionContactUsSubject" class="form-control" />
+                <span asp-validation-for="TransactionContactUsSubject" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="TransactionContactUsMessage" class="form-label"></label>
+                <textarea asp-for="TransactionContactUsMessage" class="form-control"></textarea>
+                <span asp-validation-for="TransactionContactUsMessage" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="text-end m-3">
+            <input type="submit" value="Save" class="btn btn-primary" />
+            <a asp-action="Index" class="btn btn-success">Back to List</a>
+        </div>
+    </div>
+</form>

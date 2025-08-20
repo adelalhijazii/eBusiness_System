@@ -1,0 +1,118 @@
+﻿@model IEnumerable<eBusiness.Models.MasterTeam>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    a:hover {
+        text-decoration: none;
+    }
+</style>
+
+<div class="row mb-5">
+    <div class="col-6">
+        <div class="text-start">
+            <h1 class="fw-bolder">Team</h1>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="text-end">
+            <a asp-action="Create" class="btn btn-primary">Create New</a>
+        </div>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table id="datatables-reponsive" class="table table-hover table-striped" style="width:100%">
+        <thead class="text-center">
+            <tr>
+                <th> Title </th>
+                <th> Breef </th>
+                <th> ImageUrl </th>
+                <th> Actions </th>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MasterTeamTitle)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MasterTeamBreef)
+                    </td>
+                    <td>
+                        <img src="~/Pictures/MasterTeam/@item.MasterTeamImageUrl" alt="MasterTeam" style="max-width:30px" />
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.MasterTeamId">
+                            <i class="far fa-fw fa-edit fa-lg me-2" style="color:forestgreen;"></i>
+                        </a>
+                        <a class="btnDelete" href="#" data-toggle="modal" data-target="#centeredModalDanger" data-paths="@Url.ActionLink("Delete", "MasterTeam", new { Delete = item.MasterTeamId })">
+                            <i class="fas fa-fw fa-trash fa-lg me-2" style="color:red;"></i>
+                        </a>
+                        @if (item.IsActive)
+                        {
+                            <a asp-action="Active" asp-route-id="@item.MasterTeamId">
+                                <i class="align-middle me-2 fas fa-fw fa-toggle-on fa-2x"></i>
+                            </a>
+                        }
+                        else
+                        {
+                            <a asp-action="Active" asp-route-id="@item.MasterTeamId">
+                                <i class="align-middle me-2 fas fa-fw fa-toggle-off fa-2x" style="color:gray;"></i>
+                            </a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="centeredModalDanger" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Delete</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body m-3">
+                <p class="mb-0">Are You sure want to delete this Record ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <input type="button" class="btn btn-danger" value="Delete" id="btnConfirmDelete" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        var urlPathDelete = "";
+
+        $(".btnDelete").click(function () {
+            console.log($(this).data("paths"));
+            urlPathDelete = $(this).data("paths");
+            console.log(urlPathDelete);
+            $('#centeredModalDanger').modal('show');
+        });
+
+        $("#btnConfirmDelete").click(function () {
+            window.location = urlPathDelete;
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Datatables Responsive
+        $("#datatables-reponsive").DataTable({
+            responsive: true
+        });
+    });
+</script>

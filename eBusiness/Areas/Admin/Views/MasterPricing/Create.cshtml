@@ -1,0 +1,52 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterPricingViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">New Pricing</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="MasterPricingId" class="form-control" type="hidden" value="0" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterPricingTitle" class="form-label"></label>
+                <input asp-for="MasterPricingTitle" class="form-control" placeholder="Enter Title" />
+                <span asp-validation-for="MasterPricingTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterPricingBreef" class="form-label"></label>
+                <input asp-for="MasterPricingBreef" class="form-control" placeholder="Enter Breef" />
+                <span asp-validation-for="MasterPricingBreef" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterPricingUrl" class="form-label"></label>
+                <input asp-for="MasterPricingUrl" class="form-control" placeholder="Enter Email" />
+                <span asp-validation-for="MasterPricingUrl" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterPricingDescription" class="form-label"></label>
+                <textarea asp-for="MasterPricingDescription" class="form-control" rows="6" placeholder="Enter Description"></textarea>
+                <span asp-validation-for="MasterPricingDescription" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>

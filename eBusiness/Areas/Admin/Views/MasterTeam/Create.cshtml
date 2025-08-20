@@ -1,0 +1,66 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterTeamViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">New Team</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="MasterTeamId" class="form-control" type="hidden" value="0" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamTitle" class="form-label"></label>
+                <input asp-for="MasterTeamTitle" class="form-control" placeholder="Enter Title" />
+                <span asp-validation-for="MasterTeamTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamBreef" class="form-label"></label>
+                <input asp-for="MasterTeamBreef" class="form-control" placeholder="Enter Breef" />
+                <span asp-validation-for="MasterTeamBreef" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamDescription" class="form-label"></label>
+                <textarea asp-for="MasterTeamDescription" class="form-control" placeholder="Enter Description"></textarea>
+                <span asp-validation-for="MasterTeamDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamIcon" class="form-label"></label>
+                <input asp-for="MasterTeamIcon" class="form-control" placeholder="Enter Icon" />
+                <span asp-validation-for="MasterTeamIcon" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamIconUrl" class="form-label"></label>
+                <input asp-for="MasterTeamIconUrl" class="form-control" placeholder="Enter URL" />
+                <span asp-validation-for="MasterTeamIconUrl" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTeamFile" class="form-label"></label>
+                <input asp-for="MasterTeamFile" type="file" class="form-control" />
+                <span asp-validation-for="MasterTeamFile" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>

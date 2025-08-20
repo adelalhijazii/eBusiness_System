@@ -1,0 +1,86 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterWhyUsViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">Edit Feature</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="MasterWhyUsId" />
+    <input type="hidden" asp-for="CreateUser" />
+    <input type="hidden" asp-for="CreateDate" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterWhyUsTitle" class="form-label"></label>
+                <input asp-for="MasterWhyUsTitle" class="form-control" />
+                <span asp-validation-for="MasterWhyUsTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterWhyUsBreef" class="form-label"></label>
+                <input asp-for="MasterWhyUsBreef" class="form-control" />
+                <span asp-validation-for="MasterWhyUsBreef" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterWhyUsDescription" class="form-label"></label>
+                <textarea asp-for="MasterWhyUsDescription" class="form-control"></textarea>
+                <span asp-validation-for="MasterWhyUsDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterWhyUsFile" class="form-label"></label>
+                <input asp-for="MasterWhyUsFile" class="form-control" onchange="previewImage(this)" />
+                <span asp-validation-for="MasterWhyUsFile" class="text-danger"></span>
+                <input type="hidden" asp-for="MasterWhyUsImageUrl" />
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <div class="mt-3">
+                    <img id="preview" src="@(string.IsNullOrEmpty(Model.MasterWhyUsImageUrl) ? "" : Url.Content("~/Pictures/MasterWhyUs/" + Model.MasterWhyUsImageUrl))"
+                         class="img-thumbnail" style="max-height: 70px; max-width:70px;" alt="WhyUs Image" />
+                </div>
+            </div>
+        </div>
+        @* <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterWhyUsFile" class="form-label"></label>
+                <input asp-for="MasterWhyUsFile" class="form-control" />
+                <span asp-validation-for="MasterWhyUsFile" class="text-danger"></span>
+                <input type="hidden" asp-for="MasterWhyUsImageUrl" class="form-control" />
+            </div>
+        </div> *@
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>
+
+<script>
+    function previewImage(input) {
+        const preview = document.getElementById('preview');
+        const file = input.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>

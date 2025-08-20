@@ -1,0 +1,115 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterTransformingDataViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">Edit Service</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Edit" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="MasterTransformingDataId" />
+    <input type="hidden" asp-for="CreateUser" />
+    <input type="hidden" asp-for="CreateDate" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataRateNumber" class="form-label"></label>
+                <input asp-for="MasterTransformingDataRateNumber" class="form-control" />
+                <span asp-validation-for="MasterTransformingDataRateNumber" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataRateStar" class="form-label"></label>
+                <input asp-for="MasterTransformingDataRateStar" class="form-control" />
+                <span asp-validation-for="MasterTransformingDataRateStar" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataRateTitle" class="form-label"></label>
+                <input asp-for="MasterTransformingDataRateTitle" class="form-control" />
+                <span asp-validation-for="MasterTransformingDataRateTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataDescription" class="form-label"></label>
+                <textarea asp-for="MasterTransformingDataDescription" class="form-control"></textarea>
+                <span asp-validation-for="MasterTransformingDataDescription" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-8 mb-3"></div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataFile" class="form-label"></label>
+                <input asp-for="MasterTransformingDataFile" class="form-control" onchange="previewImage(this)" />
+                <span asp-validation-for="MasterTransformingDataFile" class="text-danger"></span>
+                <input type="hidden" asp-for="MasterTransformingDataRateImageUrl" />
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <div class="mt-3">
+                    <img id="preview" src="@(string.IsNullOrEmpty(Model.MasterTransformingDataRateImageUrl) ? "" : Url.Content("~/Pictures/MasterTransformingData/" + Model.MasterTransformingDataRateImageUrl))"
+                         class="img-thumbnail" style="max-height: 70px; max-width:70px;" alt="TransformingData Image" />
+                </div>
+            </div>
+        </div>
+        <div class="col-4 mb-3"></div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataActiveClients" class="form-label"></label>
+                <input asp-for="MasterTransformingDataActiveClients" class="form-control" />
+                <span asp-validation-for="MasterTransformingDataActiveClients" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataAnalyticsProjects" class="form-label"></label>
+                <input asp-for="MasterTransformingDataAnalyticsProjects" class="form-control" />
+                <span asp-validation-for="MasterTransformingDataAnalyticsProjects" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataAutomationSuccess" class="form-label"></label>
+                <input asp-for="MasterTransformingDataAutomationSuccess" class="form-control" />
+                <span asp-validation-for="MasterTransformingDataAutomationSuccess" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterTransformingDataCloudReliability" class="form-label"></label>
+                <input asp-for="MasterTransformingDataCloudReliability" class="form-control" />
+                <span asp-validation-for="MasterTransformingDataCloudReliability" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Save" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>
+
+<script>
+    function previewImage(input) {
+        const preview = document.getElementById('preview');
+        const file = input.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                preview.src = e.target.result;
+            }
+            reader.readAsDataURL(file);
+        }
+    }
+</script>

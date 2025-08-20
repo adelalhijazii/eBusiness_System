@@ -1,0 +1,38 @@
+﻿@model eBusiness.Areas.Admin.ViewModels.MasterQuestionsViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row mb-3">
+    <div class="col-12">
+        <div class="text-start">
+            <h1 class="fw-bolder">New Questions</h1>
+        </div>
+    </div>
+</div>
+
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input asp-for="MasterQuestionsId" class="form-control" type="hidden" value="0" />
+    <div class="row m-0">
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterQuestionsTitle" class="form-label"></label>
+                <input asp-for="MasterQuestionsTitle" class="form-control" placeholder="Enter Title" />
+                <span asp-validation-for="MasterQuestionsTitle" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4 mb-3">
+            <div class="form-group">
+                <label asp-for="MasterQuestionsDescription" class="form-label"></label>
+                <textarea asp-for="MasterQuestionsDescription" class="form-control" placeholder="Enter Description" rows="4"></textarea>
+                <span asp-validation-for="MasterQuestionsDescription" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="text-end m-3">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-success">Back to List</a>
+    </div>
+</form>
